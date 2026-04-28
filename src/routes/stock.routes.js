@@ -7,7 +7,7 @@ stockRouter.route('/stock')
     .get(obtenerInventarioGeneral)
    
 
-stockRouter.route('/:sucursalId')
+stockRouter.route('/stock/:sucursalId')
     .get(obtenerStockPorSucursal);
 
 

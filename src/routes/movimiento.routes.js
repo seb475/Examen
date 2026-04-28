@@ -3,7 +3,7 @@ const express = require('express');
 
 const movimientoRouter = express.Router();
 
-movimientoRouter.route('/')
+movimientoRouter.route('/movimiento')
     .get(obtenerHistorial)
     .post(registrarMovimiento);
 

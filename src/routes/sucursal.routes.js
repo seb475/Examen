@@ -3,7 +3,7 @@ const express = require('express');
 
 const sucursalRouter = express.Router();
 
-sucursalRouter.route('/')
+sucursalRouter.route('/sucursales')
     .get(obtenerSucursales)  
     .post(crearSucursal);    
 

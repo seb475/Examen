@@ -3,7 +3,7 @@ const express = require('express');
 
 const stockRouter = express.Router();
 
-stockRouter.route('/')
+stockRouter.route('/stock')
     .get(obtenerInventarioGeneral)
    
 

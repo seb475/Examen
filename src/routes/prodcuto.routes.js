@@ -3,7 +3,7 @@ const express = require('express');
 
 const productoRouter = express.Router();
 
-productoRouter.route('/')
+productoRouter.route('/productos')
     .get(getAll)
     .post(create);
 

@@ -12,7 +12,7 @@ const registrarMovimiento = catchError(async (req, res) => {
     }
 
     const movimiento = await Movimiento.create({
-        tipo, productoId, cantidad, sucursalOrigenId, sucursalDestinoId, estado: 'procesado'
+        tipo, productoId, cantidad, sucursalOrigenId, sucursalDestinoId, estado: 'processed'
     });
 
     if (tipo === 'entrada' || tipo === 'transferencia') {

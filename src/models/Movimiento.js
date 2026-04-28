@@ -34,8 +34,8 @@ const movimientoSchema = new Schema({
 
   estado: { 
     type: String, 
-    enum: ['pendiente', 'procesado', 'fallido'], 
-    default: 'pendiente' 
+    enum: ['pending', 'processed', 'failed'], 
+    default: 'pending' 
   },
 
   intentos: { 

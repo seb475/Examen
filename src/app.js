@@ -15,6 +15,18 @@ app.use(helmet({
 }));
 app.use(cors());
 
+//*  RUTA TEMPORAL GENERAR TOKEN  
+app.get("/get-token", (req, res) => {
+    const jwt = require("jsonwebtoken");
+    const token = jwt.sign(
+        { id: "id_de_prueba" }, 
+        process.env.TOKEN_SECRET, 
+        { expiresIn: '7d' }
+    );
+    res.send(token);
+});
+
+
 // rutas
 app.use(router);
 

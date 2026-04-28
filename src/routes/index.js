@@ -1,7 +1,8 @@
 const express = require('express');
+const productoRouter = require('./prodcuto.routes');
 const router = express.Router();
 
-// colocar las rutas aquí
+router.use(productoRouter);
 
 
 module.exports = router;

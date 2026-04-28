@@ -1,0 +1,53 @@
+const mongoose = required('mongoose');
+const { Schema } = mongoose;
+
+const movimientoSchema = new Schema({
+  tipo: { 
+    type: String, 
+    enum: ['entrada', 'salida', 'transferencia'], 
+    required: true 
+  },
+
+  productoId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Producto', 
+    required: true 
+  },
+
+  cantidad: { 
+    type: Number, 
+    required: true,
+    min: [1]
+  },
+
+  sucursalOrigenId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Sucursal',
+    required: function() { return this.tipo !== 'entrada'; } 
+  },
+
+  sucursalDestinoId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Sucursal',
+    required: function() { return this.tipo !== 'salida'; } 
+  },
+
+  estado: { 
+    type: String, 
+    enum: ['pendiente', 'procesado', 'fallido'], 
+    default: 'pendiente' 
+  },
+
+  intentos: { 
+    type: Number, 
+    default: 0 
+  },
+
+  error: { 
+    type: String 
+  }
+}, 
+{ timestamps: true });
+
+const Movimiento = mongoose.model('Movimiento', movimientoSchema);
+module.exports = Movimiento;

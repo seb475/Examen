@@ -17,7 +17,7 @@ beforeAll(async () => {
         id: new mongoose.Types.ObjectId().toHexString() 
     }
     const secret = process.env.TOKEN_SECRET
-    token = jwt.sign(payload, secret, { expiresIn: '1d' })
+    token = jwt.sign(payload, secret, { expiresIn: '7d' })
 })
 
 afterAll(async () => {

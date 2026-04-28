@@ -18,7 +18,7 @@ afterAll(async () => {
     await mongoServer.stop()
 });
 
-test('GET/sucursales deve traer todas las sucursales ', async () => {
+test('GET/sucursales debe traer todas las sucursales ', async () => {
     const res = await request(app)
     .get("/sucursales")
     expect(res.status).toBe(200)
@@ -26,7 +26,7 @@ test('GET/sucursales deve traer todas las sucursales ', async () => {
 });
 
 
-test('POST /sucursales deve crear una sucursal', async () => {
+test('POST /sucursales debe crear una sucursal', async () => {
     const nuevaSucursal = {
     "nombre": "Sucursal Hermosillo Centro",
     "ubicacion": "Hermosillo, Sonora"

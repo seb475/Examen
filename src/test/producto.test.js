@@ -26,7 +26,7 @@ test('GET/ productos deve traer todos los prodcutos ', async () => {
 });
 
 
-test('POST / productos deve crear un producto', async () => {
+test('POST / productos debe crear un producto', async () => {
     const nuevoProducto = {
         SKU: "TAMDRA-004",
         nombre: "Tablones de Madera",

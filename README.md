@@ -109,6 +109,9 @@ Para ejecutar la suite de tests automatizados:
 ## 📝 Notas de Proceso
 Puedes consultar el archivo PROCESS.md para conocer más sobre las decisiones técnicas, diagramas de arquitectura y retos superados durante el desarrollo.
 
+## ⏳ Elavoracion en 1 semana 
+Si el tiempo dado para la prueva fueara de 1 semana en vez de 48hrs lograria terminar el front y back juntos desplegarlos y intregrar el back en el front como hacer 
+un front mas complejo y mejor visible, aprender ye entender como usar RabbitMQ e la implementacion de Docker 
 
 
 ## 👨🏽‍💻 Author

@@ -1,4 +1,4 @@
-const { obtenerDashboard, obtenerReporteFechas } = require('../controllers/reporte.controllers');
+const { obtenerDashboard, obtenerReporteFechas } = require('../controllers/reporte.controller');
 const express = require('express');
 
 const reporteRouter = express.Router();

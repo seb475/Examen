@@ -1,40 +1,27 @@
-const Movimiento = require('../models/Movimiento');
-const Stock = require('../models/Stock');
-const catchError = require('../utils/catchError');
+const Movimiento = require('../models/Movimiento')
+const catchError = require('../utils/catchError')
 
 const registrarMovimiento = catchError(async (req, res) => {
     const { tipo, productoId, cantidad, sucursalOrigenId, sucursalDestinoId } = req.body;
-    if (tipo !== 'entrada') {
-        const origen = await Stock.findOne({ productoId, sucursalId: sucursalOrigenId });
-        if (!origen || origen.cantidad < cantidad) {
-            return res.status(400).json({ mensaje: "Stock insuficiente" });
-        }
-    }
-
-    const movimiento = await Movimiento.create({
-        tipo, productoId, cantidad, sucursalOrigenId, sucursalDestinoId, estado: 'pending'
-    });
-
-    if (tipo === 'entrada' || tipo === 'transferencia') {
-        await Stock.findOneAndUpdate(
-            { productoId, sucursalId: sucursalDestinoId },
-            { $inc: { cantidad: cantidad } },
-            { upsert: true }
-        );
-    }
     
-    if (tipo === 'salida' || tipo === 'transferencia') {
-        await Stock.findOneAndUpdate(
-            { productoId, sucursalId: sucursalOrigenId },
-            { $inc: { cantidad: -cantidad } }
-        );
-    }
-
-    return res.status(201).json(movimiento);
+    const movimiento = await Movimiento.create({
+        tipo,
+        productoId,
+        cantidad,
+        sucursalOrigenId,
+        sucursalDestinoId,
+        estado: 'pending', 
+        reintentos: 0      
+    });
+    return res.status(202).json({
+        mensaje: "Movimiento registrado. Procesando en segundo plano...",
+        movimiento
+    });
 });
 
 const obtenerHistorial = catchError(async (req, res) => {
     const historial = await Movimiento.find()
+        .sort({ createdAt: -1 }) 
         .populate('productoId', 'nombre SKU')
         .populate('sucursalOrigenId', 'nombre')
         .populate('sucursalDestinoId', 'nombre');

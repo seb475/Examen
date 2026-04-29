@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const connectDB = require('./utils/dbConnection');
 const app = require('./app');
+const startWorker = require('./workers/movimientoWorker');
 
 connectDB();
 
@@ -16,4 +17,6 @@ const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+
+	startWorker();
 })

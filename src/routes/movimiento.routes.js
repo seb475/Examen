@@ -5,8 +5,8 @@ const verifyJWT = require('../utils/verifyJWT');
 const movimientoRouter = express.Router();
 
 movimientoRouter.route('/movimiento')
-    .get(verifyJWT,obtenerHistorial)
-    .post(verifyJWT,registrarMovimiento);
+    .get(obtenerHistorial)
+    .post(registrarMovimiento);
 
 
 

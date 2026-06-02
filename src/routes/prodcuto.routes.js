@@ -6,7 +6,7 @@ const productoRouter = express.Router();
 
 productoRouter.route('/productos')
     .get(getAll)
-    .post(verifyJWT,create);
+    .post(create);
 
 
 module.exports = productoRouter;

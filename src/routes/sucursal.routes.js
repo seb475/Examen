@@ -6,6 +6,6 @@ const sucursalRouter = express.Router();
 
 sucursalRouter.route('/sucursales')
     .get(obtenerSucursales)  
-    .post(verifyJWT,crearSucursal);    
+    .post(crearSucursal);    
 
 module.exports = sucursalRouter;
